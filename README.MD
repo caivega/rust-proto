@@ -1,0 +1,1 @@
+generate proto in rust
