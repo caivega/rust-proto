@@ -46,17 +46,15 @@ pub struct Transaction {
     pub account: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, tag = "3")]
     pub sequence: u64,
-    #[prost(string, tag = "4")]
-    pub amount: ::prost::alloc::string::String,
-    #[prost(int64, tag = "5")]
-    pub gas: i64,
-    #[prost(bytes = "vec", tag = "6")]
+    #[prost(uint64, tag = "4")]
+    pub gas: u64,
+    #[prost(bytes = "vec", tag = "5")]
     pub destination: ::prost::alloc::vec::Vec<u8>,
-    #[prost(message, optional, tag = "7")]
+    #[prost(message, optional, tag = "6")]
     pub payload: ::core::option::Option<PayloadInfo>,
-    #[prost(bytes = "vec", tag = "8")]
+    #[prost(bytes = "vec", tag = "7")]
     pub public_key: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes = "vec", tag = "9")]
+    #[prost(bytes = "vec", tag = "8")]
     pub signature: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -95,7 +93,7 @@ pub struct AccountState {
     #[prost(string, tag = "2")]
     pub name: ::prost::alloc::string::String,
     #[prost(string, tag = "3")]
-    pub amount: ::prost::alloc::string::String,
+    pub gas: ::prost::alloc::string::String,
     #[prost(message, optional, tag = "4")]
     pub user: ::core::option::Option<DataInfo>,
     #[prost(message, optional, tag = "5")]
