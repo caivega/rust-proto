@@ -162,13 +162,15 @@ pub struct TokenInfo {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContractInfo {
-    #[prost(bytes = "vec", repeated, tag = "1")]
-    pub inputs: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    #[prost(bytes = "vec", tag = "1")]
+    pub account: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes = "vec", repeated, tag = "2")]
+    pub inputs: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    #[prost(bytes = "vec", repeated, tag = "3")]
     pub outputs: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
-    #[prost(string, tag = "3")]
+    #[prost(string, tag = "4")]
     pub method: ::prost::alloc::string::String,
-    #[prost(bytes = "vec", repeated, tag = "4")]
+    #[prost(bytes = "vec", repeated, tag = "5")]
     pub params: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
