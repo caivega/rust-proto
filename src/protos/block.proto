@@ -109,6 +109,13 @@ message PageInfo {
     bytes Data		    = 2;
 }
 
+message UserInfo {
+    bytes Account   = 1;
+    bytes Key       = 2;
+    bytes Nonce     = 3;
+    DataInfo Data   = 4;
+}
+
 message PayloadInfo {
     repeated DataInfo Infos = 1;
 }

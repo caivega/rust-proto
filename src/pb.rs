@@ -191,6 +191,18 @@ pub struct PageInfo {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UserInfo {
+    #[prost(bytes = "vec", tag = "1")]
+    pub account: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes = "vec", tag = "2")]
+    pub key: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes = "vec", tag = "3")]
+    pub nonce: ::prost::alloc::vec::Vec<u8>,
+    #[prost(message, optional, tag = "4")]
+    pub data: ::core::option::Option<DataInfo>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PayloadInfo {
     #[prost(message, repeated, tag = "1")]
     pub infos: ::prost::alloc::vec::Vec<DataInfo>,
