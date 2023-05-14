@@ -4,28 +4,28 @@ package pb;
 option go_package = ".;pb";
 
 message Block {
-    uint64 BlockIndex       = 1;
-    bytes ParentHash        = 2;
-    bytes RootHash          = 3;
-    bytes TransactionHash   = 4;
-    bytes StateHash         = 5;
-    int64 Timestamp         = 6;
+    bytes Account	    = 1;
+    uint64 BlockIndex       = 2;
+    bytes ParentHash        = 3;
+    bytes RootHash          = 4;
+    bytes TransactionHash   = 5;
+    bytes StateHash         = 6;
+    int64 Timestamp         = 7;
 
-    repeated TransactionWithData  Transactions  = 7;
-    repeated bytes States                       = 8;
+    repeated TransactionWithData  Transactions  = 8;
+    repeated bytes States                       = 9;
 }
 
 message Transaction {
     uint32 TransactionType  = 1;
-    
+   
     bytes Account       = 2;
-    uint64 Sequence     = 3;
+    uint64 Sequence     = 3;    
     uint64 Gas          = 4;
-    bytes Destination   = 5;
-    PayloadInfo Payload = 6;
+    PayloadInfo Payload = 5;
 
-    bytes PublicKey     = 7;
-    bytes Signature     = 8;
+    bytes PublicKey     = 6;
+    bytes Signature     = 7;
 }
 
 message Receipt {
@@ -34,6 +34,7 @@ message Receipt {
     uint32 TransactionResult = 3;
 
     repeated bytes States    = 4;
+    repeated bytes Datas     = 5;
 }
 
 message State {
@@ -50,19 +51,32 @@ message AccountState {
     State State     = 1;
 
     string Name	    = 2;
-    string Gas      = 3;
 
-    DataInfo User       = 4;
-    DataInfo Code       = 5;
-    DataInfo Page       = 6;
-    DataInfo Token      = 7;
+    DataInfo User       = 3;
+    DataInfo Code       = 4;
+    DataInfo Page       = 5;
+    DataInfo Token      = 6;
+    DataInfo Memory	= 7;
     DataInfo Data       = 8;
-    DataInfo File       = 9;
+
+    bytes PublicKey     = 9;
+    bytes RootHash	= 10;
+}
+
+message GroupInfo {
+    bytes Hash		   	= 1;
+    repeated DataInfo List    	= 2;
+    repeated DataInfoEntry Map 	= 3;
 }
 
 message DataInfo {
     bytes Hash      = 1;
     bytes Content   = 2;
+}
+
+message DataInfoEntry {
+    string Name	   = 1;
+    DataInfo Value = 2;
 }
 
 message MetaItem {
@@ -74,10 +88,8 @@ message MetaItem {
 
 message MetaInfo {
     string Symbol           = 1;
-    uint64 Index            = 2;
-    uint64 Count            = 3;
-    int64 Total             = 4;
-    repeated MetaItem Items = 5;
+    int64 Total             = 2;
+    repeated MetaItem Items = 3;
 }
 
 message TokenItem {
@@ -92,7 +104,7 @@ message TokenInfo {
 }
 
 message ContractInfo {
-    bytes Account	    = 1;
+    AccountInfo Account	    = 1;
     repeated bytes Inputs   = 2;
     repeated bytes Outputs  = 3;
     string Method           = 4;
@@ -111,10 +123,15 @@ message PageInfo {
 }
 
 message UserInfo {
-    bytes Account   = 1;
-    bytes Key       = 2;
-    bytes Nonce     = 3;
-    DataInfo Data   = 4;
+    AccountInfo Account	    = 1;
+    bytes Key       	    = 2;
+    bytes Nonce     	    = 3;
+    DataInfo Data   	    = 4;
+}
+
+message AccountInfo {
+    bytes Code	= 1;
+    bytes Data	= 2;
 }
 
 message PayloadInfo {
